@@ -1,0 +1,45 @@
+// A launch configuration that launches the extension inside a new window
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+	"version": "0.2.0",
+    "configurations": [
+        { 
+            "name": "Attach", 
+            "port": 6009, 
+            "request": "attach", 
+            "skipFiles": [ 
+                "<node_internals>/**" 
+            ], 
+            "sourceMaps": true, 
+            "outFiles": [ 
+                "${workspaceFolder}/out/**/*.js"
+            ], 
+            "type": "pwa-node" 
+        }, 
+        {
+            "name": "Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "env": {
+                // next line allow to connect to the new vscode instance
+                //"DEBUG_BREAK": "true"
+            }
+        },
+        {
+            "name": "Debug unittests",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run", "test"
+            ],
+            "port": 5858
+        }
+    ]
+}

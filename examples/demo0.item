@@ -1,0 +1,17 @@
+package myPackage1 {
+
+    property_set myset {
+        property optional myprop1: STRING
+    }
+
+}
+
+package myPackage (property_set myPackage1.myset) {
+
+    rawtype int INT 32
+
+    struct demo1 {
+        scalar x: myPackage.int (.myprop1="")
+    }
+
+}
